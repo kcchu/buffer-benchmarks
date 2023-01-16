@@ -19,15 +19,16 @@ Sample data came from [Farcaster](https://github.com/farcasterxyz/hub).
 
 ### Go (16 Jan 2023)
 
-  * Benchmarks are CPU bound (no disk operations).
+  * Benchmarks are CPU bound (no disk operations)
   * OS: macOS 13.0.1
   * CPU: Intel(R) Core(TM) i7-8559U CPU @ 2.70GHz
 
 | Test                              | Protobuf | FlatBuffers |
 | --------------------------------- | -------- | ----------- |
-| Encode (ns/op)                    | 670.6    | 722.7       |
-| Decode (ns/op)                    | 890.2    | 19.43       |
-| Wire format size (bytes)          | 268      | 372         |
-| Wire format size, gzipped (bytes) | 179      | 219         |
+| Encode (ns/op)                    | 887.7    | 874.5       |
+| Decode (ns/op)                    | 1185     | 24.29       |
+| Wire format size (bytes)          | 299      | 432         |
+| Wire format size, gzipped (bytes) | 323      | 406         |
 
-(Smaller is better)
+> **Note**
+> Smaller is better
