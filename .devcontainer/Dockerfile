@@ -1,4 +1,4 @@
-FROM "mcr.microsoft.com/devcontainers/base:bullseye"
+FROM mcr.microsoft.com/devcontainers/go:1-bullseye
 
 RUN apt-get update && apt-get install -y \
     cmake \
@@ -10,4 +10,4 @@ RUN cd /tmp \
     && cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release \
     && make install \
     && rm -fr /tmp/flatbuffers
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+RUN su vscode -c "go install google.golang.org/protobuf/cmd/protoc-gen-go@latest"
