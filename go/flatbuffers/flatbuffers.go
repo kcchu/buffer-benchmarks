@@ -15,9 +15,19 @@ func Encode() []byte {
 
 	text := mdb.CreateString(constants.SampleText)
 	fid := mdb.CreateByteVector(constants.SampleFid)
+	parentFid := mdb.CreateByteVector(constants.SampleFid)
+	parentTsHash := mdb.CreateByteVector(constants.SampleTsHash)
+
+	// CastId
+	generated.CastIdStart(mdb)
+	generated.CastIdAddFid(mdb, parentFid)
+	generated.CastIdAddTsHash(mdb, parentTsHash)
+	parent := generated.CastIdEnd(mdb)
 
 	// CastAddBody
 	generated.CastAddBodyStart(mdb)
+	generated.CastAddBodyAddParentType(mdb, generated.TargetIdCastId)
+	generated.CastAddBodyAddParent(mdb, parent)
 	generated.CastAddBodyAddText(mdb, text)
 	castAddBody := generated.CastAddBodyEnd(mdb)
 

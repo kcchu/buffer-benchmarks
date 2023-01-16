@@ -32,5 +32,5 @@ func BenchmarkFlatBuffers(b *testing.B) {
 	if err != nil {
 		log.Fatalln("Failed to gzip:", err)
 	}
-	fmt.Printf("Wire format size (gzip)= %d\n", len(buf.Bytes()))
+	fmt.Printf("Wire format size (gzip) = %d\n", len(buf.Bytes()))
 }

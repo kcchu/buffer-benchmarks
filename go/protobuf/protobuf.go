@@ -14,6 +14,12 @@ func Encode() []byte {
 	md := &generated.MessageData{
 		Body: &generated.MessageData_CastAddBody{
 			CastAddBody: &generated.CastAddBody{
+				Parent: &generated.CastAddBody_CastId{
+					CastId: &generated.CastId{
+						Fid:    constants.SampleFid,
+						TsHash: constants.SampleTsHash,
+					},
+				},
 				Text: constants.SampleText,
 			},
 		},
