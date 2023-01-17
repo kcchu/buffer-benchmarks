@@ -8,7 +8,9 @@
     },
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/typescript:2": {}
-	}
+	},
+
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
