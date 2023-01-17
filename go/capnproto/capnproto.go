@@ -10,7 +10,7 @@ import (
 	"github.com/kcchu/buffer-benchmarks/constants"
 )
 
-func Encode() []byte {
+func Encode(packed bool) []byte {
 	arena := capnp.SingleSegment(nil)
 
 	msg, seg, err := capnp.NewMessage(arena)
@@ -41,7 +41,12 @@ func Encode() []byte {
 	md.SetTimestamp(constants.SampleTimestamp)
 	md.SetFid(constants.SampleFid)
 	md.SetNetwork(generated.FarcasterNetwork_devnet)
-	mdBytes, err := msg.MarshalPacked()
+	var mdBytes []byte
+	if packed {
+		mdBytes, err = msg.MarshalPacked()
+	} else {
+		mdBytes, err = msg.Marshal()
+	}
 	if err != nil {
 		log.Fatalln("Failed to encode MessageData:", err)
 	}
@@ -61,15 +66,26 @@ func Encode() []byte {
 	m.SetSignature(constants.SampleSignature)
 	m.SetSignatureScheme(generated.SignatureScheme_ed25519)
 	m.SetSigner(constants.SampleSigner)
-	mBytes, err := msg2.MarshalPacked()
+	var mBytes []byte
+	if packed {
+		mBytes, err = msg2.MarshalPacked()
+	} else {
+		mBytes, err = msg2.Marshal()
+	}
 	if err != nil {
 		log.Fatalln("Failed to encode Message:", err)
 	}
 	return mBytes
 }
 
-func Decode(buf []byte) {
-	msg1, err := capnp.UnmarshalPacked(buf)
+func Decode(packed bool, buf []byte) {
+	var msg1 *capnp.Message
+	var err error
+	if packed {
+		msg1, err = capnp.UnmarshalPacked(buf)
+	} else {
+		msg1, err = capnp.Unmarshal(buf)
+	}
 	if err != nil {
 		log.Fatalln("Failed to decode capnp Message", err)
 	}
@@ -83,7 +99,12 @@ func Decode(buf []byte) {
 		log.Fatalln("Failed to decode Message.data", err)
 	}
 
-	msg2, err := capnp.UnmarshalPacked(data)
+	var msg2 *capnp.Message
+	if packed {
+		msg2, err = capnp.UnmarshalPacked(data)
+	} else {
+		msg2, err = capnp.Unmarshal(data)
+	}
 	if err != nil {
 		log.Fatalln("Failed to decode data buffer", err)
 	}
