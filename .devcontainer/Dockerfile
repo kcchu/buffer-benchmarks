@@ -13,3 +13,4 @@ RUN cd /tmp \
     && rm -fr /tmp/flatbuffers
 RUN su vscode -c "go install google.golang.org/protobuf/cmd/protoc-gen-go@latest"
 RUN su vscode -c "go install capnproto.org/go/capnp/v3/capnpc-go@latest"
+RUN su vscode -c "go install github.com/gogo/protobuf/protoc-gen-gogofaster@latest"

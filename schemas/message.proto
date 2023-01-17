@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package generated;
 
-option go_package = "protobuf/generated";
+option go_package = "protobuf/generated;generated";
 
 enum MessageType {
   DefaultMessageType = 0;
