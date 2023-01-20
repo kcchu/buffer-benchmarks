@@ -15,8 +15,12 @@ Sample data came from [Farcaster](https://github.com/farcasterxyz/hub).
 ### Programming Languages
 
   * Go
+  * Rust
 
 ## Results
+
+> **Note**
+> Smaller is better
 
 ### Go (17 Jan 2023)
 
@@ -25,7 +29,7 @@ Sample data came from [Farcaster](https://github.com/farcasterxyz/hub).
   * CPU: Intel(R) Core(TM) i7-8559U CPU @ 2.70GHz
   * Protobuf: [golang/protobuf](https://github.com/golang/protobuf)
   * Protobuf (gogofaster): [gogoprotobuf](https://github.com/gogo/protobuf)
-  * FlatBuffers: [google/flatbuffers/go](https://github.com/google/flatbuffers/tree/master/go) v0.0.0-20230110200425-62e4d2e5b215
+  * FlatBuffers: [google/flatbuffers](https://github.com/google/flatbuffers/tree/master/go) v0.0.0-20230110200425-62e4d2e5b215
   * Capnp: [capnproto/go-capnproto2](https://github.com/capnproto/go-capnproto2) v3.0.0-alpha.23
 
 | Test                              | Protobuf | Protobuf (gogofaster) | FlatBuffers | Capnp | Capnp (packed) |
@@ -35,5 +39,17 @@ Sample data came from [Farcaster](https://github.com/farcasterxyz/hub).
 | Wire format size (bytes)          | 299      | 299                 | 432         | 440   | 344            |
 | Wire format size, gzipped (bytes) | 323      | 323                 | 406         | 392   | 368            |
 
-> **Note**
-> Smaller is better
+### Rust (20 Jan 2023)
+
+  * Benchmarks are CPU bound (no disk operations)
+  * OS: macOS 13.0.1
+  * CPU: Intel(R) Core(TM) i7-8559U CPU @ 2.70GHz
+  * Protobuf (rust-protobuf): [stepancheg/rust-protobuf](https://github.com/stepancheg/rust-protobuf) 3.2.0
+  * Protobuf (prost): [tokio-rs/prost](https://github.com/tokio-rs/prost) 0.11.6
+  * FlatBuffers: [google/flatbuffers](https://github.com/google/flatbuffers/tree/master/rust) 22.10.26
+
+| Test                              | Protobuf (rust-protobuf)| Protobuf (prost) | FlatBuffers |
+| --------------------------------- | ----------------------- | -----------------| ----------- |
+| Encode (ns/op)                    | 717                     | 668              | 931         |
+| Decode (ns/op)                    | 748                     | 1110             | 355         |
+| Wire format size (bytes)          | 299                     | 299              | 428         |

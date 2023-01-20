@@ -7,7 +7,8 @@
         "dockerfile": "Dockerfile"
     },
 	"features": {
-		"ghcr.io/devcontainers-contrib/features/typescript:2": {}
+		"ghcr.io/devcontainers-contrib/features/typescript:2": {},
+		"ghcr.io/devcontainers/features/rust:1": {}
 	},
 
 	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
