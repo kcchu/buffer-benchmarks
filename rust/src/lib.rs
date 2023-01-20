@@ -1,7 +1,3 @@
-#![feature(test)]
-
-extern crate test;
-
 mod constants;
 
 pub mod protobuf;

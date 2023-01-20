@@ -54,20 +54,3 @@ pub fn decode(buf: &[u8]) {
         panic!("Unexpected decoded text")
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use test::bench::Bencher;
-
-    #[bench]
-    fn bench_encode(b: &mut Bencher) {
-        b.iter(|| _ = super::encode());
-    }
-
-    #[bench]
-    fn bench_decode(b: &mut Bencher) {
-        let buf = super::encode();
-        println!("Wire format size (bytes) = {}", buf.len());
-        b.iter(|| _ = super::decode(&buf));
-    }
-}

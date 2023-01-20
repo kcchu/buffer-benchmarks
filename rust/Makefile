@@ -4,5 +4,4 @@ generate:
 
 .PHONY: bench
 bench:
-	rustup default nightly
-	cargo bench -- --nocapture
+	cargo bench

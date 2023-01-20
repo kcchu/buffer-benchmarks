@@ -50,6 +50,6 @@ Sample data came from [Farcaster](https://github.com/farcasterxyz/hub).
 
 | Test                              | Protobuf (rust-protobuf)| Protobuf (prost) | FlatBuffers |
 | --------------------------------- | ----------------------- | -----------------| ----------- |
-| Encode (ns/op)                    | 717                     | 668              | 931         |
-| Decode (ns/op)                    | 748                     | 1110             | 355         |
+| Encode (ns/op)                    | 704.88                  | 642.90           | 878.02      |
+| Decode (ns/op)                    | 751.61                  | 1058.7           | 331.12      |
 | Wire format size (bytes)          | 299                     | 299              | 428         |
